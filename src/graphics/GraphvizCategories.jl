@@ -94,8 +94,10 @@ function to_graphviz_property_graph(d::Diagram; kw...)
   vname = has_subpart(g, :vname) ? string.(subpart(g, :vname), ":") : fill("",nv(g))
   for v in vertices(g)
     lᵥ = vname[v]
+    # lᵥ = g[v, :vname]
     tᵥ = ob_map(d, v)
     set_vprop!(pg, v, :label, string(lᵥ, tᵥ))
+    # set_vprop!(pg, v, :label, string(lᵥ, ":", tᵥ))
   end
   for e in edges(g)
     tₑ = hom_map(d, e)
