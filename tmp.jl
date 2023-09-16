@@ -75,3 +75,17 @@ to_graphviz(g_2_h,node_labels=:vname,edge_labels=:ename,node_colors=true,edge_co
 
 # -----------------------------------------------------
 # 3. drawing natural transformation between FinFunctors
+
+# Graph homomorphisms as natural transformations.
+F = FinDomFunctor(path_graph(Graph, 3))
+
+g = parallel_arrows(Graph, 2)
+add_edges!(g, [2,2], [2,2])
+G = FinDomFunctor(g)
+α = FinTransformation(F, G, V=FinFunction([1,2,2]), E=FinFunction([1,3],4))
+
+components(α)
+
+# for morphisms between diagrams,
+# diagram_map gives the functor
+# shape_map gives the natural transformation
